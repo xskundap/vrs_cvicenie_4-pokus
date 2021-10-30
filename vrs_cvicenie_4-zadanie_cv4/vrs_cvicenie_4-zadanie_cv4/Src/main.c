@@ -90,6 +90,9 @@ int main(void)
   while (1)
   {
 	  // Modify the code below so it sets/resets used output pin connected to the LED
+	  
+	  switch_state = checkButtonState(GPIO_PORT_BUTTON, GPIO_PIN_BUTTON, TRIGGER_FALL, BUTTON_EXTI_SAMPLES_WINDOW, BUTTON_EXTI_SAMPLES_REQUIRED);
+	  
 	  if(switch_state)
 	  {
 		  GPIOA->BSRR |= GPIO_BSRR_BS_4;
