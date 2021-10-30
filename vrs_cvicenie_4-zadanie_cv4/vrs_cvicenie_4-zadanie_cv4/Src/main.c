@@ -27,6 +27,10 @@ uint8_t check_button_state(GPIO_TypeDef* PORT, uint8_t PIN);
 
 uint8_t switch_state = 0;
 
+uint8_t checkButtonState(GPIO_TypeDef* PORT, uint8_t PIN, uint8_t edge, uint8_t samples_window, uint8_t samples_required){
+	
+}
+
 int main(void)
 {
   /*Default system setup*/
@@ -51,8 +55,15 @@ int main(void)
   /* Configure external interrupt - EXTI*/
 
   	  //type your code for EXTI configuration (priority, enable EXTI, setup EXTI for input pin, trigger edge) here:
-	NVIC_SetPriority(EXTI3_IRQn, 2);
-  	NVIC_EnableIRQ(EXTI3_IRQn);
+	  NVIC_SetPriority(EXTI3_IRQn, 2);
+  	  NVIC_EnableIRQ(EXTI3_IRQn);
+	
+	  SYSCFG->EXTICR[1] &= ~(0xFU << 0U);
+	  //Enable interrupt from EXTI line 3
+	  EXTI->IMR |= EXTI_IMR_MR3;
+	  //Set EXTI trigger to falling edge
+	  EXTI->RTSR &= ~(EXTI_IMR_MR3);
+	  EXTI->FTSR |= EXTI_IMR_MR3;
 
 
   /* Configure GPIOB-4 pin as an input pin - button */
