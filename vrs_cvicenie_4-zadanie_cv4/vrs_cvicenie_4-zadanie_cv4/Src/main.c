@@ -99,7 +99,7 @@ int main(void)
 	  }
 	  else
 	  {
-		  GPIOB->BRR |= GPIO_BRR_BR_3;
+		  GPIOA->BRR |= GPIO_BRR_BR_4;
 	  }
   }
 
