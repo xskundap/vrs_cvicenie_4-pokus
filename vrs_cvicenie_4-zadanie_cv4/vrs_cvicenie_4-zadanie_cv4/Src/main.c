@@ -56,11 +56,22 @@ int main(void)
   /* Configure GPIOB-4 pin as an input pin - button */
 
 	  //type your code for GPIO configuration here:
-
+	
+	  RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+	  GPIOC->MODER &= ~(GPIO_MODER_MODER3);
+	  GPIOC->PUPDR &= ~(GPIO_PUPDR_PUPDR3);
+	  GPIOC->PUPDR |= GPIO_PUPDR_PUPDR3_0;
 
   /* Configure GPIOA-4 pin as an output pin - LED */
 
 	  //type your code for GPIO configuration here:
+	  
+	  RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
+	  GPIOA->MODER &= ~(GPIO_MODER_MODER4);
+	  GPIOA->MODER |= GPIO_MODER_MODER4_0;
+	  GPIOA->OTYPER &= ~(GPIO_OTYPER_OT_4);
+	  GPIOA->OSPEEDR &= ~(GPIO_OSPEEDER_OSPEEDR4);
+	  GPIOA->PUPDR &= ~(GPIO_PUPDR_PUPDR4);
 
 
   while (1)
