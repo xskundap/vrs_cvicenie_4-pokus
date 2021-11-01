@@ -26,6 +26,7 @@ void SystemClock_Config(void);
 uint8_t check_button_state(GPIO_TypeDef* PORT, uint8_t PIN);
 
 uint8_t switch_state = 0;
+int before = 0;
 
 
 int main(void)
@@ -144,6 +145,16 @@ void SystemClock_Config(void)
 uint8_t checkButtonState(GPIO_TypeDef* PORT, uint8_t PIN, uint8_t edge, uint8_t samples_window, uint8_t samples_required)
 {
 	  //type your code for "checkButtonState" implementation here:
+	if(HAL_GPIO_ReadPin(PORT, PIN)){
+		if(before){
+			switch_state = 0;
+			before = 0;
+		}
+		else{
+			switch_state = 1;
+			before = 1;
+		}
+	}
 }
 
 
