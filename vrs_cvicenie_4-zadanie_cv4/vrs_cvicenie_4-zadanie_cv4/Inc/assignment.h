@@ -12,7 +12,7 @@
 
 // defines for input port used by button
 #define		GPIO_PORT_BUTTON				GPIOC
-#define		GPIO_PIN_BUTTON					3
+#define		GPIO_PIN_BUTTON					GPIO_PIN_3 //3
 
 // defines for "checkButtonState"
 #define		TRIGGER_RISE					1
